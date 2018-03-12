@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+   <!--开启mvc的注解扫描-->
+    <mvc:annotation-driven/>
+    <!--开启注解的扫描-->
+    <context:component-scan base-package="com.windows3"></context:component-scan>
+
+    <aop:aspectj-autoproxy/>
+    <!--资源文件的加载-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:log4j.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!--配置数据源和数据库连接池-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!--配置SQLSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath:mapper/*.xml">
+
+        </property>
+        <property name="typeAliasesPackage" value="com.windows3.po"></property>
+     <property name="configLocation" value="classpath:mybatis.config.xml"></property>
+    </bean>
+    <!--配置映射文件对应的接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.windows3.dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--配置事务的通知-->
+    <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*"/>
+            <tx:method name="update*"/>
+            <tx:method name="delete*"/>
+            <tx:method name="login*"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置切面-->
+    <aop:config>
+        <aop:pointcut id="pointcuts" expression="execution(* com.windows3.service.impl.*.*(..))" />
+        <aop:advisor advice-ref="transactionInterceptor" pointcut-ref="pointcuts"/>
+    </aop:config>
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+
+<!--资源文件映射-->
+    <!--mapping 为使用时的web映射，location表示此种文件在工程中的目录-->
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/scripts/**" location="/js/"/>
+    <mvc:resources mapping="/styles/**" location="/css/"/>
+    <mvc:resources mapping="/staticPages/**" location="/page/"/>
+
+<!--
+    　 ? 匹配任何单字符　　
+
+    　　* 匹配0或者任意数量的字符　
+
+    　　** 匹配0或者更多的目录
+    -->
+    <!--拦截器-->
+    <!--<mvc:interceptors>-->
+
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/customer/*"/>-->
+            <!--<mvc:exclude-mapping path="/**/*login*"></mvc:exclude-mapping>-->
+            <!--<mvc:exclude-mapping path="/**/*reg*"></mvc:exclude-mapping>-->
+            <!--<bean class="com.windows3.fitler.SessionHandlerInterceptor"></bean>-->
+
+        <!--</mvc:interceptor>-->
+
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/admin/*"/>-->
+            <!--<mvc:exclude-mapping path="/**/*login*"></mvc:exclude-mapping>-->
+            <!--<bean class="com.windows3.fitler.AdminSessionHandlerInterceptor"></bean>-->
+        <!--</mvc:interceptor>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/product/*"/>-->
+            <!--<mvc:exclude-mapping path="/**/*add*"></mvc:exclude-mapping>-->
+
+            <!--<bean class="com.windows3.fitler.ProductSessionHandlerInterceptor"></bean>-->
+
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+
+</beans>

@@ -1,0 +1,116 @@
+body{
+    padding:0px;
+    margin: 0px;
+}
+
+.navbar-default{
+    background-color: rgba(255, 255, 255, 0);
+
+
+}
+.header{
+    background:url("../images/banner.jpg");
+    background-size: cover;
+    margin-bottom: 50px;
+}
+.title-row{
+    height: 470px;
+
+
+}
+.navbar{
+    text-align: center;
+
+
+}
+.tit-a:link{
+      color: rgb(251, 245, 255);
+       font-size: 20px;
+  }
+.tit-a:hover{
+    color: rgb(37, 80, 123);
+}
+.tit-content{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+}
+.home{
+    font-size: 85px;
+    font-family: 'Lora', serif;
+    color: #fbf5ff;
+}
+.home-p{
+    display: inline-block;
+    width: 400px;
+}
+.home-a{
+    display: inline-block;
+    margin: 2px  5px;
+    padding: 5px  20px;
+    border-radius: 20px;
+    font-size: 15px;
+    background-color: #5cb85c;
+    text-decoration: none;
+
+}
+.home-a:hover{
+    display: inline-block;
+    margin: 2px  5px;
+    padding: 5px  20px;
+    border-radius: 10px;
+    background-color: #ffb1b2;
+    text-decoration: none;
+    color: #fbf5ff;
+    border-radius: 20px;
+
+}
+.history{
+    text-align: center;
+}
+.history-h1{
+    padding-bottom: 50px;
+    background:url("../images/underline.png") no-repeat 50%  70%;
+}
+.service{
+    background:url("../images/sbgb.jpg");
+    background-size: cover;
+}
+
+.history-content{
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+.service-title{
+    color: white;
+}
+.whitelable{
+    margin-bottom: 10px;
+    height: 3px;
+    background-color: #fbf5ff;
+}
+.service-text{
+    color: gainsboro;
+}
+.my-col-md-4{
+    text-align: center;
+    margin-top: 10px;
+}
+.service-img{
+    width: 10%;
+}
+.gallery-ul{
+
+    padding: 0px;
+    list-style: none;
+    margin: 0 auto;
+    width:90%;
+}
+.gallery-li{
+    float: left;
+}
+.gallery-list{
+
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.AdminDao">
+    <resultMap id="adminMap" type="Admin" >
+        <id column="id" property="id"></id>
+        <result column="ADMIN_NAME" property="adminName"></result>
+        <result column="ADMIN_PASSWORD" property="adminPassword"></result>
+        <result column="ADMIN_IS_NORMAL" property="adminIsNormal"></result>
+        <result column="ADMIN_CREATE_TIME" property="adminCreateTime"></result>
+        <result column="ADMIN_MODIFIED_TIME" property="adminModifiedTime"></result>
+    </resultMap>
+   <sql id="createId">
+       SELECT SHOPPING_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkid">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+    <select id="login" parameterType="Admin" resultMap="adminMap">
+        SELECT * FROM admin  WHERE   admin_name=#{adminName} and admin_password=#{adminPassword}
+    </select>
+
+</mapper>

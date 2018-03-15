@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/controller/AdminController.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/controller/DepartmentController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/controller/PostController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/dao/AdminDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/dao/CustomerDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/dao/DepartmentDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/dao/PostDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/po/Admin.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/po/Customer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/po/Department.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/po/Post.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/AdminService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/CustomerService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/DepartmentService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/PostService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/impl/AdminServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/impl/CustomerServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/impl/DepartmentServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/impl/PostServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/util/GenEntityOracle.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/test/test/AdminTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/test/CustomerTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/test/DepartmentTest.java" charset="UTF-8" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.DepartmentDao">
+    <resultMap id="departmentMap" type="Department" >
+        <id column="id" property="id"></id>
+        <result column="DEPARTMENT_NAME" property="departmentName"></result>
+        <result column="DEPARTMENT_CREATE_TIME" property="departmentCreateTime"></result>
+        <result column="DEPARTMENT_MODIFIED_TIME" property="departmentModifiedTime"></result>
+    </resultMap>
+   <sql id="createId">
+       SELECT SHOPPING_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkid">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+
+
+</mapper>

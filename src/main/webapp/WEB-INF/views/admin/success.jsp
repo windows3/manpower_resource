@@ -14,11 +14,12 @@
 <body>
 
 <h1>${info}欢迎:${admin.adminName}</h1>
-<a href="/product/add.view">增加商品</a>
-<c:forEach items="${products}" var="prodcut">
-   <c:out value="${prodcut.productName}"></c:out></br>
-</c:forEach>
-
+<%--<a href="/product/add.view">增加商品</a>--%>
+<%--<c:forEach items="${products}" var="prodcut">--%>
+   <%--<c:out value="${prodcut.productName}"></c:out></br>--%>
+<%--</c:forEach>--%>
+<a href="/department/department.create">增加部门</a>
+<a  href="/post/post.create">增加职位</a>
 
 </body>
 </html>

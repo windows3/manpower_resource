@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.PostDao">
+    <resultMap id="postMap" type="Post" >
+        <id column="id" property="id"></id>
+        <result column="DEPARTMENT_ID" property="departmentId"></result>
+        <result column="ADMIN_ID" property="adminId"></result>
+        <result column="POST_NAME" property="postName"></result>
+        <result column="POST_IS_NORMAL" property="postIsNormal"></result>
+        <result column="POST_CREATE_TIME" property="postCreateTime"></result>
+        <result column="POST_MODIFIED_TIME" property="postModifiedTime"></result>
+    </resultMap>
+   <sql id="createId">
+       SELECT SHOPPING_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkid">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+
+
+</mapper>

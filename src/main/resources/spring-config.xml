@@ -63,6 +63,7 @@
             <tx:method name="update*"/>
             <tx:method name="delete*"/>
             <tx:method name="login*"/>
+            <tx:method name="cre*"/>
         </tx:attributes>
     </tx:advice>
 

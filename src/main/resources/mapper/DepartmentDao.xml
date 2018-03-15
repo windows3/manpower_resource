@@ -10,7 +10,7 @@
         <result column="DEPARTMENT_MODIFIED_TIME" property="departmentModifiedTime"></result>
     </resultMap>
    <sql id="createId">
-       SELECT SHOPPING_SEQ.nextval FROM dual
+       SELECT MANPOWER_SEQ.nextval FROM dual
    </sql>
     <sql id="checkid">
         <where>
@@ -24,6 +24,12 @@
             </choose>
         </where>
     </sql>
-
+<insert id="addDepartment" parameterType="Department" >
+    <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+        <include refid="createId"></include>
+    </selectKey>
+ INSERT INTO MANPOWER_RESOURCE.DEPARTMENT(ID, DEPARTMENT_NAME)
+  VALUES (#{id},#{departmentName})
+</insert>
 
 </mapper>

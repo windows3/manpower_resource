@@ -21,7 +21,7 @@
 
     </resultMap>
    <sql id="createId">
-       SELECT SHOPPING_SEQ.nextval FROM dual
+       SELECT MANPOWER_SEQ.nextval FROM dual
    </sql>
     <sql id="checkid">
         <where>

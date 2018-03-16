@@ -13,7 +13,7 @@ public class DepartmentTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         DepartmentService departmentService = (DepartmentService) context.getBean("departmentService");
         Department department =new Department();
-        department.setDepartmentName("人事");
+        department.setDepartmentName("1");
         boolean b = departmentService.addDepartment(department);
         System.out.println(b);
 

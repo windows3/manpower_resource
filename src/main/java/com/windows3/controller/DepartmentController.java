@@ -24,12 +24,18 @@ public class DepartmentController {
     }
     @RequestMapping(value = "/department.add")
     public   String  addDepartment(@ModelAttribute  Department department ,Model model){
+
         if (department == null) {
             model.addAttribute("info","增加失败");
             return "department/addDepartment";
         }
-        boolean b=departmentService.addDepartment(department);
-        model.addAttribute("info","增加成功");
+        Department department1 = departmentService.queryDepartment(department);
+        if (department1 == null) {
+            boolean b=departmentService.addDepartment(department);
+            model.addAttribute("info","增加成功");
+            return "department/addDepartment";
+        }
+        model.addAttribute("info","增加失败,不能增加已有的部门");
         return "department/addDepartment";
 
     }

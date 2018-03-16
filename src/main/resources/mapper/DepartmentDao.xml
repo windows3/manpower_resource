@@ -31,5 +31,8 @@
  INSERT INTO MANPOWER_RESOURCE.DEPARTMENT(ID, DEPARTMENT_NAME)
   VALUES (#{id},#{departmentName})
 </insert>
-
+<select id="queryDepartment" parameterType="Department" resultType="Department">
+    SELECT * FROM MANPOWER_RESOURCE.DEPARTMENT
+    WHERE DEPARTMENT_NAME=#{departmentName}
+</select>
 </mapper>

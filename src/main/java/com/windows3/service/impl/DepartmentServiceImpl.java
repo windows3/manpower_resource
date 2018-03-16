@@ -18,4 +18,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     public boolean addDepartment(Department department) {
         return departmentDao.addDepartment(department);
     }
+
+    @Override
+    public Department queryDepartment(Department department) {
+        return departmentDao.queryDepartment(department);
+    }
 }

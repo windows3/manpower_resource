@@ -16,7 +16,7 @@
     部门名称:<input type="text" name="departmentName" required><br/>
 
     <%--是否记住密码<input type="checkbox" value="on" name="isremember">--%>
-    <input type="submit" value="登录">
+    <input type="submit" value="增加">
 
 </form>
 </body>

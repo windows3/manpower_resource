@@ -10,4 +10,5 @@ public interface DepartmentService {
 
 
     boolean addDepartment(Department department);
+    Department queryDepartment(Department department);
 }

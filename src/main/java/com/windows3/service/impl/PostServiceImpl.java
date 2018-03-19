@@ -1,6 +1,7 @@
 package com.windows3.service.impl;
 
 import com.windows3.dao.PostDao;
+import com.windows3.po.Post;
 import com.windows3.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,4 +19,8 @@ public class PostServiceImpl implements PostService {
     private PostDao postDao;
 
 
+    @Override
+    public boolean addPost(Post post) {
+        return postDao.addPost(post);
+    }
 }

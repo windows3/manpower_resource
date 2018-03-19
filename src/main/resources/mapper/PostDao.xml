@@ -27,6 +27,13 @@
             </choose>
         </where>
     </sql>
+    <insert id="addPost" parameterType="Post">
+        <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+            <include refid="createId"></include>
+        </selectKey>
+        INSERT INTO MANPOWER_RESOURCE.POST(ID, DEPARTMENT_ID, POST_NAME, ADMIN_ID)
+        VALUES (#{id},#{departmentId},#{postName},#{adminId})
 
+    </insert>
 
 </mapper>

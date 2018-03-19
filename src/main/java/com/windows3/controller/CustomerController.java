@@ -32,9 +32,7 @@ public class CustomerController {
     @RequestMapping(value = "/reg.do")
     public   String    customerRegister(@ModelAttribute Customer customer, HttpSession session, Model model){
 
-        System.out.println("增加之前："+customer);
         boolean addFlag = customerService.addCustomer(customer);
-        System.out.println("增加之后"+customer);
         if (addFlag){
             model.addAttribute("info","注册成功");
             session.setAttribute("customer",customer);
@@ -48,6 +46,10 @@ public class CustomerController {
     @RequestMapping(value = "/login.view")
     public   String  loginPage(){
         return "customer/login";
+    }
+    @RequestMapping(value = "/login.index")
+    public   String  index(){
+        return "customer/index";
     }
 
 

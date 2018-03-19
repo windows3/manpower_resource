@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 /**
  * Created by 3 on 2018/3/9.
  */
@@ -29,11 +31,13 @@ public class DepartmentController {
             model.addAttribute("info","增加失败");
             return "department/addDepartment";
         }
-        Department department1 = departmentService.queryDepartment(department);
-        if (department1 == null) {
+        List<Department> departments = departmentService.queryDepartment(department);
+        if (departments.isEmpty()||departments==null) {
             boolean b=departmentService.addDepartment(department);
-            model.addAttribute("info","增加成功");
-            return "department/addDepartment";
+            if(b){
+                model.addAttribute("info","增加成功");
+                return "department/addDepartment";
+            }
         }
         model.addAttribute("info","增加失败,不能增加已有的部门");
         return "department/addDepartment";

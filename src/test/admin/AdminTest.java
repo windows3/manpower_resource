@@ -1,4 +1,4 @@
-package test;
+package admin;
 
 import com.windows3.po.Admin;
 import com.windows3.service.AdminService;

@@ -22,11 +22,12 @@ public class IndexController {
 
     @RequestMapping(value ="")
     public   String   indexPage(){
+
       /*  if (true){
             throw  new  NullPointerException();
         }*/
 
-        return "customer/index";
+        return "index";
     }
     @RequestMapping(value = "/customerIndex.do")
     public   String   customerIndex(HttpServletRequest request, Customer customer, Model model, HttpSession session){

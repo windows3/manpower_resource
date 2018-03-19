@@ -3,20 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.windows3.dao.DepartmentDao">
-    <resultMap id="departmentMap" type="Department" >
+    <resultMap id="departmentMap" type="Department">
         <id column="id" property="id"></id>
         <result column="DEPARTMENT_NAME" property="departmentName"></result>
         <result column="DEPARTMENT_CREATE_TIME" property="departmentCreateTime"></result>
         <result column="DEPARTMENT_MODIFIED_TIME" property="departmentModifiedTime"></result>
     </resultMap>
-   <sql id="createId">
+    <sql id="createId">
        SELECT MANPOWER_SEQ.nextval FROM dual
    </sql>
     <sql id="checkid">
         <where>
             <choose>
                 <when test="id!=null">
-                    AND  id=#{id}
+                    AND id=#{id}
                 </when>
                 <otherwise>
                     AND 1=2
@@ -24,15 +24,15 @@
             </choose>
         </where>
     </sql>
-<insert id="addDepartment" parameterType="Department" >
-    <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
-        <include refid="createId"></include>
-    </selectKey>
- INSERT INTO MANPOWER_RESOURCE.DEPARTMENT(ID, DEPARTMENT_NAME)
-  VALUES (#{id},#{departmentName})
-</insert>
-<select id="queryDepartment" parameterType="Department" resultType="Department">
+    <insert id="addDepartment" parameterType="Department">
+        <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+            <include refid="createId"></include>
+        </selectKey>
+        INSERT INTO MANPOWER_RESOURCE.DEPARTMENT(ID, DEPARTMENT_NAME)
+        VALUES (#{id},#{departmentName})
+    </insert>
+    <select id="queryDepartment" parameterType="Department" resultType="Department">
     SELECT * FROM MANPOWER_RESOURCE.DEPARTMENT
-    WHERE DEPARTMENT_NAME=#{departmentName}
+    WHERE DEPARTMENT_NAME LIKE '%${departmentName}%'
 </select>
 </mapper>

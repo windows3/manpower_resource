@@ -6,6 +6,8 @@ import com.windows3.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by 3 on 2018/3/16.
  */
@@ -20,7 +22,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department queryDepartment(Department department) {
+    public List<Department> queryDepartment(Department department) {
         return departmentDao.queryDepartment(department);
     }
 }

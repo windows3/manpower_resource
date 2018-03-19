@@ -20,9 +20,10 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/impl/DepartmentServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/service/impl/PostServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/windows3/util/GenEntityOracle.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/test/test/AdminTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/test/CustomerTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/test/DepartmentTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/test/admin/AdminTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/customer/CustomerTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/department/AddDepartmentTest.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

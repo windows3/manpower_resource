@@ -1,4 +1,4 @@
-package test;
+package customer;
 
 import com.windows3.po.Customer;
 import com.windows3.service.CustomerService;

@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public boolean addCustomer(Customer customer) {
-        return false;
+        return customerDao.addCustomer(customer);
     }
 
     public boolean deleteCustomer(Customer customer) {

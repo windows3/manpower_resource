@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -24,10 +25,16 @@ public class AdminController {
 
         return "admin/login";
     }
+    @RequestMapping(value = "/login.index")
+    public   String  index(){
+
+        return "admin/index";
+    }
     @RequestMapping(value = "/login.do")
-    public   String  loginAdmin(@ModelAttribute Admin admin, Model model){
+    public   String  loginAdmin(@ModelAttribute Admin admin, Model model, HttpSession httpSession){
         Admin login = adminService.login(admin);
         if(login!=null){
+            httpSession.setAttribute("admin",login);
             model.addAttribute("info",admin.getAdminName());
             return "admin/success";
         }

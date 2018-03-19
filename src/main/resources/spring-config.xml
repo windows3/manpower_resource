@@ -65,8 +65,8 @@
             <tx:method name="login*"/>
             <tx:method name="cre*"/>
         </tx:attributes>
-    </tx:advice>
 
+    </tx:advice>
     <!--配置切面-->
     <aop:config>
         <aop:pointcut id="pointcuts" expression="execution(* com.windows3.service.impl.*.*(..))" />

@@ -19,6 +19,7 @@
    <%--<c:out value="${prodcut.productName}"></c:out></br>--%>
 <%--</c:forEach>--%>
 <a href="/department/department.create">增加部门</a>
+<a href="/post/post.create">增加职位</a>
 <%--<a  href="/post/post.create">增加职位</a>--%>
 
 </body>

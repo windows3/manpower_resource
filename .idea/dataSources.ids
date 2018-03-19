@@ -10,8 +10,8 @@
       <schema id="1" name="MANPOWER_RESOURCE">
         <object-id>64</object-id>
         <created-timestamp>2018-03-12.02:11:17</created-timestamp>
-        <modified-timestamp>2018-03-15.23:57:10</modified-timestamp>
-        <introspection-timestamp>2018-03-15.23:57:11</introspection-timestamp>
+        <modified-timestamp>2018-03-17.11:08:54</modified-timestamp>
+        <introspection-timestamp>2018-03-17.11:08:55</introspection-timestamp>
       </schema>
       <sequence id="2" parent="1" name="MANPOWER_SEQ">
         <object-id>53518</object-id>
@@ -32,7 +32,7 @@
       <table id="4" parent="1" name="CUSTOMER">
         <object-id>53516</object-id>
         <created-timestamp>2018-03-12.02:11:17</created-timestamp>
-        <modified-timestamp>2018-03-12.02:17:38</modified-timestamp>
+        <modified-timestamp>2018-03-17.11:08:54</modified-timestamp>
         <organization>HEAP</organization>
       </table>
       <table id="5" parent="1" name="DEPARTMENT">
@@ -129,7 +129,7 @@
       </column>
       <column id="24" parent="4" name="CUSTOMER_IS_NORMAL">
         <data-type>NUMBER(*)</data-type>
-        <default-expression>1</default-expression>
+        <default-expression>0</default-expression>
       </column>
       <column id="25" parent="4" name="CUSTOMER_CREATE_TIME">
         <data-type>DATE</data-type>
@@ -437,7 +437,6 @@
         <modified-timestamp>2018-03-13.17:36:11</modified-timestamp>
         <columns>CUSTOMER_ID</columns>
         <initially-deferred>1</initially-deferred>
-        <ref-key>~.CUSTOMER.SYS_C005631</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>

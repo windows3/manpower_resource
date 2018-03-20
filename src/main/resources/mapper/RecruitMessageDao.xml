@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.RecruitMessageDao">
+    <resultMap id="recruitMessageMap" type="RecruitMessage" >
+        <id column="id" property="id"></id>
+        <result column="ADMIN_ID" property="adminID"></result>
+        <result column="POST_ID" property="postId"></result>
+        <result column="RECRUIT_SALARY" property="recruitSalary"></result>
+        <result column="RECRUIT_NUMBER" property="recruitNumber"></result>
+        <result column="RECRUIT_IS_NORMAL" property="recruitIsNormal"></result>
+        <result column="RECRUIT_IS_RELEASE" property="recruitIsRelease"></result>
+        <result column="RECRUIT_CREATE_TIME" property="recruitCreateTime"></result>
+        <result column="RECRUIT_MODIFIED_TIME" property="recruitModifiedTime"></result>
+    </resultMap>
+   <sql id="createId">
+       SELECT MANPOWER_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkid">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+
+
+</mapper>

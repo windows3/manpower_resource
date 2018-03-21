@@ -23,4 +23,14 @@ public class PostServiceImpl implements PostService {
     public boolean addPost(Post post) {
         return postDao.addPost(post);
     }
+
+    @Override
+    public List<Post> queryPostByName(Post post) {
+        return postDao.queryPostByName(post);
+    }
+
+    @Override
+    public Post queryPostById(Post post) {
+        return postDao.queryPostById(post);
+    }
 }

@@ -14,7 +14,10 @@
     <script src="/scripts/bootstrap.min.js"></script>
 </head>
 <body>
-<a  class="btn  btn-primary" href="/customer/login.index">游客</a>
-<a  class="btn  btn-primary" href="/admin/login.index">管理员</a>
+<a  class="btn  btn-primary" href="/recruitMessage/recruit.create">添加</a>
+<a  class="btn  btn-primary" href="/recruitMessage/query.allIng">未发布</a>
+<a  class="btn  btn-primary" href="/recruitMessage/query.allEd">已发布</a>
+
+
 </body>
 </html>

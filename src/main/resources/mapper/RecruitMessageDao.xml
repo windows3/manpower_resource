@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.windows3.dao.RecruitMessageDao">
-    <resultMap id="recruitMessageMap" type="RecruitMessage" >
+    <resultMap id="recruitMessageMap" type="RecruitMessage">
         <id column="id" property="id"></id>
-        <result column="ADMIN_ID" property="adminID"></result>
+        <result column="ADMIN_ID" property="adminId"></result>
         <result column="POST_ID" property="postId"></result>
         <result column="RECRUIT_SALARY" property="recruitSalary"></result>
         <result column="RECRUIT_NUMBER" property="recruitNumber"></result>
@@ -13,15 +13,21 @@
         <result column="RECRUIT_IS_RELEASE" property="recruitIsRelease"></result>
         <result column="RECRUIT_CREATE_TIME" property="recruitCreateTime"></result>
         <result column="RECRUIT_MODIFIED_TIME" property="recruitModifiedTime"></result>
+        <!--<collection property="post"-->
+        <!--ofType="Post"-->
+        <!--column="{id=id}"-->
+        <!--select="com.windows3.dao.PostDao.queryPostById" fetchType="lazy"></collection>-->
+        <association property="post" column="{id=id}"
+                     select="com.windows3.dao.PostDao.queryPostById"></association>
     </resultMap>
-   <sql id="createId">
+    <sql id="createId">
        SELECT MANPOWER_SEQ.nextval FROM dual
    </sql>
     <sql id="checkid">
         <where>
             <choose>
                 <when test="id!=null">
-                    AND  id=#{id}
+                    AND id=#{id}
                 </when>
                 <otherwise>
                     AND 1=2
@@ -29,6 +35,19 @@
             </choose>
         </where>
     </sql>
+    <insert id="addRecruitMessage" parameterType="RecruitMessage">
+        <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+            <include refid="createId"></include>
+        </selectKey>
+        INSERT INTO MANPOWER_RESOURCE.RECRUIT_MESSAGE(ID, ADMIN_ID, POST_ID, RECRUIT_SALARY, RECRUIT_NUMBER)
+        VALUES (#{id},#{adminId},#{postId},#{recruitSalary},#{recruitNumber})
+    </insert>
 
-
+    <select id="queryRecruitByStatus" parameterType="RecruitMessage" resultMap="recruitMessageMap">
+    SELECT * FROM MANPOWER_RESOURCE.RECRUIT_MESSAGE
+    WHERE RECRUIT_IS_RELEASE=#{recruitIsRelease}
+</select>
+    <update id="updateRecruitMessage" parameterType="RecruitMessage">
+        UPDATE MANPOWER_RESOURCE.RECRUIT_MESSAGE SET RECRUIT_IS_RELEASE=#{recruitIsRelease} WHERE id=#{id}
+    </update>
 </mapper>

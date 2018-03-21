@@ -103,18 +103,18 @@ public class Customer implements Serializable {
         this.customerModifiedTime = customerModifiedTime;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Customer{" +
-//                "id=" + id +
-//                ", customerName='" + customerName + '\'' +
-//                ", customerPassword='" + customerPassword + '\'' +
-//                ", customerEmail='" + customerEmail + '\'' +
-//                ", customerPhone='" + customerPhone + '\'' +
-//                ", customerMoney=" + customerMoney +
-//                ", customerIsNormal=" + customerIsNormal +
-//                ", customerCreateTime=" + customerCreateTime +
-//                ", customerModifiedTime=" + customerModifiedTime +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", customerName='" + customerName + '\'' +
+                ", customerPassword='" + customerPassword + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", customerMoney=" + customerMoney +
+                ", customerIsNormal=" + customerIsNormal +
+                ", customerCreateTime=" + customerCreateTime +
+                ", customerModifiedTime=" + customerModifiedTime +
+                '}';
+    }
 }

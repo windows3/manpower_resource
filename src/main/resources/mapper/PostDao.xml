@@ -36,4 +36,13 @@
 
     </insert>
 
+    <select id="queryPostByName" parameterType="Post" resultMap="postMap">
+        SELECT * FROM MANPOWER_RESOURCE.POST
+        WHERE POST_NAME LIKE '%${postName}%'
+    </select>
+  <select id="queryPostById" parameterType="Post" resultMap="postMap">
+        SELECT * FROM MANPOWER_RESOURCE.POST
+        WHERE id = #{id}
+    </select>
+
 </mapper>

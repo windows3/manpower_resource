@@ -13,7 +13,16 @@ public class Post  implements Serializable {
     private Integer departmentId;
     private Integer adminId;
     private String postName;
-    private int postIsNormal;
+    private Integer postIsNormal;
+
+    public Integer getPostIsNormal() {
+        return postIsNormal;
+    }
+
+    public void setPostIsNormal(Integer postIsNormal) {
+        this.postIsNormal = postIsNormal;
+    }
+
     private Timestamp postCreateTime;
     private Timestamp postModifiedTime;
 
@@ -49,13 +58,6 @@ public class Post  implements Serializable {
         this.postName = postName;
     }
 
-    public int getPostIsNormal() {
-        return postIsNormal;
-    }
-
-    public void setPostIsNormal(int postIsNormal) {
-        this.postIsNormal = postIsNormal;
-    }
 
     public Timestamp getPostCreateTime() {
         return postCreateTime;

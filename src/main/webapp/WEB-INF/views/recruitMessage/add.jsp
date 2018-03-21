@@ -14,7 +14,12 @@
     <script src="/scripts/bootstrap.min.js"></script>
 </head>
 <body>
-<a  class="btn  btn-primary" href="/customer/login.index">游客</a>
-<a  class="btn  btn-primary" href="/admin/login.index">管理员</a>
+<h1>${info}</h1>
+<form action="/recruitMessage/recruit.add" method="post">
+    职位：<input type="text" name="postName"><br>
+   基本薪资:<input type="number" name="recruitSalary"><br>
+   招聘人数:<input type="number" name="recruitNumber"><br>
+    <input type="submit" value="提交">
+</form>
 </body>
 </html>

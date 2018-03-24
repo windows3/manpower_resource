@@ -33,4 +33,9 @@ public class PostServiceImpl implements PostService {
     public Post queryPostById(Post post) {
         return postDao.queryPostById(post);
     }
+
+    @Override
+    public List<Post> queryAllByNormal(int i) {
+        return postDao.queryAllByNormal(i);
+    }
 }

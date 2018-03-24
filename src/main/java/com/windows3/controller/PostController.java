@@ -30,19 +30,34 @@ public class PostController {
     @RequestMapping(value = "/post.create")
     public String create() {
 
+        return "post/index";
+    }
+
+    @RequestMapping(value = "/addPost.add")
+    public String addPost(Model model) {
+        List<Department> departments=departmentService.queryAll();
+        if (departments == null||departments.isEmpty()) {
+            model.addAttribute("info","暂无部门,请添加");
+            return "department/addDepartment";
+        }
+        model.addAttribute("departments",departments);
+//        List<Post> posts = postService.queryAllByNormal(0);
         return "post/addPost";
     }
+
 
     @RequestMapping(value = "/post.add")
     public String addPost(@ModelAttribute Post post, @ModelAttribute Department department, Model model, HttpSession httpSession) {
         System.out.println(post);
         System.out.println(department);
 
+
         if (department == null) {
             model.addAttribute("info", "部门错误");
             return "post/addPost";
         }
         List<Department> departments = departmentService.queryDepartment(department);
+        model.addAttribute("departments",departments);
         if (departments == null || departments.isEmpty()) {
             model.addAttribute("info", "部门错误");
             return "post/addPost";
@@ -60,6 +75,7 @@ public class PostController {
         Integer id = admin.getId();
         post.setAdminId(id);
         post.setDepartmentId(departments.get(0).getId());
+
         boolean b = postService.addPost(post);
         if (b) {
             model.addAttribute("info", "增加成功");

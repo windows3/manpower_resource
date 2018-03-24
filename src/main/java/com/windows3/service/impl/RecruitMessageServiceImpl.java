@@ -3,10 +3,12 @@ package com.windows3.service.impl;
 import com.windows3.dao.RecruitMessageDao;
 import com.windows3.po.RecruitMessage;
 import com.windows3.service.RecruitMessageService;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 3 on 2018/3/20.
@@ -23,8 +25,8 @@ public class RecruitMessageServiceImpl implements RecruitMessageService{
     }
 
     @Override
-    public List<RecruitMessage> queryRecruitByStatus(int i) {
-        return recruitMessageDao.queryRecruitByStatus(i);
+    public List<RecruitMessage> queryRecruitByStatus(Integer integer,Integer offset) {
+        return recruitMessageDao.queryRecruitByStatus( integer,offset);
     }
 
     @Override

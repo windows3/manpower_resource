@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.TrainSonDao">
+    <resultMap id="trainSonMap" type="TrainSon" >
+        <id column="id" property="id"></id>
+        <result column="EMP_ID" property="empId"></result>
+        <result column="TRAIN_ID" property="trainId"></result>
+        <result column="TRAIN_SON_CREATE_TIME" property="trainSonCreateTime"></result>
+        <result column="TRAIN_SON_MODIFIED_TIME" property="trainSonModifiedTime"></result>
+
+
+    </resultMap>
+   <sql id="createId">
+       SELECT MANPOWER_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkId">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+    <insert id="addTrainSon" parameterType="TrainSon">
+        <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+            <include refid="createId"></include>
+        </selectKey>
+        INSERT INTO MANPOWER_RESOURCE.TRAIN_SON(ID, EMP_ID, TRAIN_ID)
+        VALUES (#{id},#{empId},#{trainId})
+    </insert>
+<select id="queryByTrainId" parameterType="Train" resultMap="trainSonMap">
+    SELECT * FROM MANPOWER_RESOURCE.TRAIN_SON
+    WHERE TRAIN_ID=#{id}
+
+</select>
+</mapper>

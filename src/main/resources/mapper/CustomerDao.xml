@@ -14,10 +14,10 @@
         <result column="CUSTOMER_IS_NORMAL" property="customerIsNormal"></result>
         <result column="CUSTOMER_CREATE_TIME" property="customerCreateTime"></result>
         <result column="CUSTOMER_MODIFIED_TIME" property="customerModifiedTime"></result>
-        <!--<collection property="orderLists"-->
-                    <!--ofType="OrderList"-->
-                    <!--column="id"-->
-                    <!--select="com.windows3.dao.OrderListDao.findOrderListByCid" fetchType="lazy" ></collection>-->
+        <collection property="resumes"
+                    ofType="Resume"
+                    column="{id=id}"
+                    select="com.windows3.dao.ResumeDao.queryResumeById" fetchType="lazy" ></collection>
 
     </resultMap>
    <sql id="createId">

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.TrainDao">
+    <resultMap id="trainMap" type="Train" >
+        <id column="id" property="id"></id>
+        <result column="ADMIN_ID" property="adminId"></result>
+        <result column="TRAIN_TIME" property="trainTime"></result>
+        <result column="TRAIN_LONG" property="trainLong"></result>
+        <result column="TRAIN_ADDRESS" property="trainAddress"></result>
+        <result column="TRAIN_CONTENT" property="trainContent"></result>
+        <result column="TRAIN_CREATE_TIME" property="trainCreateTime"></result>
+        <result column="TRAIN_MODIFIED_TIME" property="trainModifiedTime"></result>
+
+
+    </resultMap>
+   <sql id="createId">
+       SELECT MANPOWER_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkId">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+    <insert id="addTrain" parameterType="Train">
+        <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+            <include refid="createId"></include>
+        </selectKey>
+        INSERT INTO MANPOWER_RESOURCE.TRAIN(ID, ADMIN_ID, TRAIN_TIME, TRAIN_LONG, TRAIN_ADDRESS, TRAIN_CONTENT)
+        VALUES (#{id},#{adminId},#{trainTime},#{trainLong},#{trainAddress},#{trainContent})
+
+    </insert>
+<select id="queryAll" resultMap="trainMap">
+    SELECT * FROM MANPOWER_RESOURCE.TRAIN
+
+</select>
+</mapper>

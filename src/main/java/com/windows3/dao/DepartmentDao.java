@@ -11,5 +11,7 @@ public interface DepartmentDao {
      boolean addDepartment(Department department);
 
     List<Department> queryDepartment(Department department);
+    Department queryById(Department department);
 
+    List<Department> queryAll();
 }

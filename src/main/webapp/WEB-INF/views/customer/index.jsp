@@ -17,7 +17,7 @@
 <h1>${info}</h1>
 <a  class="btn  btn-primary" href="/customer/reg.view">注册</a>
 <a  class="btn  btn-primary" href="/customer/login.view">登录</a>
-<a  class="btn  btn-primary" href="/customer/customer.info">我的信息</a>
+
 <%--<a href="/product/allproduct">json显示商品</a>--%>
 </body>
 </html>

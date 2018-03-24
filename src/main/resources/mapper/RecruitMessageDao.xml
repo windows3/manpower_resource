@@ -17,7 +17,7 @@
         <!--ofType="Post"-->
         <!--column="{id=id}"-->
         <!--select="com.windows3.dao.PostDao.queryPostById" fetchType="lazy"></collection>-->
-        <association property="post" column="{id=id}"
+        <association property="post" column="{id=POST_ID}"
                      select="com.windows3.dao.PostDao.queryPostById"></association>
     </resultMap>
     <sql id="createId">
@@ -43,11 +43,21 @@
         VALUES (#{id},#{adminId},#{postId},#{recruitSalary},#{recruitNumber})
     </insert>
 
-    <select id="queryRecruitByStatus" parameterType="RecruitMessage" resultMap="recruitMessageMap">
-    SELECT * FROM MANPOWER_RESOURCE.RECRUIT_MESSAGE
-    WHERE RECRUIT_IS_RELEASE=#{recruitIsRelease}
+    <select id="queryRecruitByStatus"  resultMap="recruitMessageMap">
+
+ select * from (select t.*,rownum rownu from MANPOWER_RESOURCE.RECRUIT_MESSAGE t
+        where RECRUIT_IS_RELEASE=#{param1}
+        AND rownum&lt;=#{param2}*5)tt
+        where tt.rownu>(#{param2}-1)*5
+
 </select>
     <update id="updateRecruitMessage" parameterType="RecruitMessage">
         UPDATE MANPOWER_RESOURCE.RECRUIT_MESSAGE SET RECRUIT_IS_RELEASE=#{recruitIsRelease} WHERE id=#{id}
     </update>
+    <select id="queryById" parameterType="RecruitMessage" resultMap="recruitMessageMap">
+        SELECT * FROM MANPOWER_RESOURCE.RECRUIT_MESSAGE
+
+        WHERE id=#{id}
+
+    </select>
 </mapper>

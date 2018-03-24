@@ -36,7 +36,7 @@ public class CustomerController {
         if (addFlag){
             model.addAttribute("info","注册成功");
             session.setAttribute("customer",customer);
-            return "success";
+            return "customer/success";
 
         }
         model.addAttribute("info","注册失败");
@@ -65,6 +65,8 @@ public class CustomerController {
             model.addAttribute("info","登录失败");
             return "customer/index";
         }
+        session.setAttribute("customer",customer);
+        System.out.println(customer);
 //        保存cookie
         System.out.println(isremember);
         if ("on".equals(isremember)){
@@ -81,11 +83,11 @@ public class CustomerController {
         session.setAttribute("customer",customer);
         model.addAttribute("info","登录成功");
 
-        return "success";
+        return "customer/success";
     }
     @RequestMapping("/customer.info")
     public   String   customerInfo(){
-        return  "success";
+        return "customer/success";
 
     }
 

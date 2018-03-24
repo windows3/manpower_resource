@@ -31,8 +31,15 @@
         INSERT INTO MANPOWER_RESOURCE.DEPARTMENT(ID, DEPARTMENT_NAME)
         VALUES (#{id},#{departmentName})
     </insert>
-    <select id="queryDepartment" parameterType="Department" resultType="Department">
+    <select id="queryDepartment" parameterType="Department" resultMap="departmentMap">
     SELECT * FROM MANPOWER_RESOURCE.DEPARTMENT
     WHERE DEPARTMENT_NAME LIKE '%${departmentName}%'
 </select>
+    <select id="queryById" parameterType="Department" resultMap="departmentMap">
+         SELECT * FROM MANPOWER_RESOURCE.DEPARTMENT
+    WHERE ID =#{id}
+    </select>
+    <select id="queryAll" resultMap="departmentMap">
+          SELECT * FROM MANPOWER_RESOURCE.DEPARTMENT
+    </select>
 </mapper>

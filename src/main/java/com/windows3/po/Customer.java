@@ -23,8 +23,15 @@ public class Customer implements Serializable {
     private Integer customerIsNormal;
     private Timestamp customerCreateTime;
     private Timestamp customerModifiedTime;
+private List<Resume> resumes;
 
+    public List<Resume> getResumes() {
+        return resumes;
+    }
 
+    public void setResumes(List<Resume> resumes) {
+        this.resumes = resumes;
+    }
 
     public Customer() {
 

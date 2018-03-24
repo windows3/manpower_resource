@@ -15,4 +15,6 @@ public interface PostService {
 
     List<Post> queryPostByName(Post post);
     Post queryPostById(Post post);
+
+    List<Post> queryAllByNormal(int i);
 }

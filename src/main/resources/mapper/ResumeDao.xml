@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.ResumeDao">
+    <resultMap id="resumeMap" type="Resume" >
+        <id column="id" property="id"></id>
+        <result column="CUSTOMER_ID" property="customerId"></result>
+        <result column="TRUE_NAME" property="trueName"></result>
+        <result column="FAMILY_ADDRESS" property="familyAddress"></result>
+        <result column="NOW_ADDRESS" property="nowAddress"></result>
+        <result column="HEAD_PICTURE" property="headPicture"></result>
+        <result column="GRADUATE_INSTITUTIONS" property="graduateInstitutions"></result>
+        <result column="EDUCATION" property="education"></result>
+        <result column="MAJOR" property="major"></result>
+        <result column="SYNOPSIS" property="synopsis"></result>
+        <result column="RESUME_CREATE_TIME" property="resumeCreateTime"></result>
+
+    </resultMap>
+   <sql id="createId">
+       SELECT MANPOWER_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkId">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+    <insert id="addResume" parameterType="Resume">
+        <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+            <include refid="createId"></include>
+        </selectKey>
+        INSERT INTO MANPOWER_RESOURCE.RESUME(ID, CUSTOMER_ID, TRUE_NAME, FAMILY_ADDRESS, NOW_ADDRESS, HEAD_PICTURE, GRADUATE_INSTITUTIONS, EDUCATION, MAJOR, SYNOPSIS)
+        VALUES (#{id},#{customerId},#{trueName},#{familyAddress},#{nowAddress},#{headPicture},#{graduateInstitutions},#{education},#{major},#{synopsis})
+
+    </insert>
+
+<select id="queryResumeById" parameterType="Customer" resultMap="resumeMap">
+    SELECT * FROM MANPOWER_RESOURCE.RESUME
+    WHERE CUSTOMER_ID=#{id}
+</select>
+    <update id="updateResume" parameterType="Resume">
+        UPDATE MANPOWER_RESOURCE.RESUME
+        <set>
+            <if test="trueName!=null"> TRUE_NAME=#{trueName},</if>
+            <if test="familyAddress!=null"> FAMILY_ADDRESS=#{familyAddress},</if>
+            <if test="nowAddress!=null"> NOW_ADDRESS=#{nowAddress},</if>
+            <if test="headPicture!=null"> HEAD_PICTURE=#{headPicture},</if>
+            <if test="graduateInstitutions!=null"> GRADUATE_INSTITUTIONS=#{graduateInstitutions},</if>
+            <if test="education!=null"> EDUCATION=#{education},</if>
+            <if test="major!=null"> MAJOR=#{major},</if>
+            <if test="synopsis!=null"> SYNOPSIS=#{synopsis},</if>
+            <if test="resumeCreateTime!=null"> RESUME_CREATE_TIME=#{resumeCreateTime},</if>
+        </set>
+       <include refid="checkId"></include>
+    </update>
+    <select id="queryResumeByResumeId" parameterType="Resume" resultMap="resumeMap">
+        SELECT * FROM MANPOWER_RESOURCE.RESUME
+        WHERE ID=#{id}
+    </select>
+</mapper>

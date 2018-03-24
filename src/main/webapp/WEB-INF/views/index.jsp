@@ -16,5 +16,6 @@
 <body>
 <a  class="btn  btn-primary" href="/customer/login.index">游客</a>
 <a  class="btn  btn-primary" href="/admin/login.index">管理员</a>
+<a  class="btn  btn-primary" href="#">员工</a>
 </body>
 </html>

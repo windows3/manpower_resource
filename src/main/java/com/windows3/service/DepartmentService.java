@@ -13,4 +13,6 @@ public interface DepartmentService {
 
     boolean addDepartment(Department department);
     List<Department> queryDepartment(Department department);
+
+    List<Department> queryAll();
 }

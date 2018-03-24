@@ -14,17 +14,40 @@
     <script src="/scripts/jquery-3.0.0.js"></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script>
+//        $(document).ready(function () {
+//            $("#btn1").click(function (id) {
+//                $.ajax({
+//                    type: post,
+//                    url: "/recruitMessage/release.do",
+//
+//                    data: {
+//                        id: id
+//                    },
+//                    success: function (result) {
+//                        each(function () {
+//                            $("#recruit").html("<td>" + result.post.postName +
+//                                    "</td>" + "<td>" + result.recruitSalary + "</td>" +
+//                                    result.recruitNumber + "</td>" +
+//                                    "<td>" + result.recruitCreateTime + "</td>")
+//                        })
+//                    }
+//                });
+//
+//            })
+//
+//        })
+
         var xmlhttp;
         var mydate;
         var dele;
-            function addRecruitMessage(id) {
+        function addRecruitMessage(id) {
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
             } else {
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
             }
-            xmlhttp.open("POST", "/recruitMessage/release.do?id="+id, true);
+            xmlhttp.open("POST", "/recruitMessage/release.do?id=" + id, true);
             xmlhttp.send()
             xmlhttp.onreadystatechange = result1;
 
@@ -44,17 +67,17 @@
         function showTab() {
             var c = "<table class='table table-bordered'> " +
                     "<tr class='success'> " +
-                    "<th>招聘薪资</th>"+
-                    "<th>招聘人数</th>"+
-                    "<th>招聘创建时间</th>"+
-                    "<th>操作</th>"+
+                    "<th>招聘薪资</th>" +
+                    "<th>招聘人数</th>" +
+                    "<th>招聘创建时间</th>" +
+                    "<th>操作</th>" +
 
                     "</tr>"
             for (var i = 0; i < mydate.length; i++) {
                 c += "<tr>";
                 c += "<td>" + mydate[i].recruitSalary + "</td>"
                 c += "<td>" + mydate[i].recruitNumber + "</td>"
-                c += "<td>" + mydate[i].recruitCreateTime+ "</td>"
+                c += "<td>" + mydate[i].recruitCreateTime + "</td>"
                 c += "</tr>"
             }
             var con = document.getElementById("content");
@@ -69,6 +92,7 @@
         <table class="table table-bordered">
 
             <tr class="success">
+                <th>部门名</th>
                 <th>招聘薪资</th>
                 <th>招聘人数</th>
                 <th>招聘创建时间</th>
@@ -76,11 +100,15 @@
             </tr>
             <c:forEach items="${recruitMessageList}" var="recruitMessage">
                 <tr>
+                    <td><c:out value="${recruitMessage.post.postName}"></c:out></td>
                     <td><c:out value="${recruitMessage.recruitSalary}"></c:out></td>
                     <td><c:out value="${recruitMessage.recruitNumber}"></c:out></td>
                     <td><c:out value="${recruitMessage.recruitCreateTime}"></c:out></td>
                     <td>
-                        <button class="btn  btn-danger" onclick="addRecruitMessage(${recruitMessage.id},this)">发布</button>
+                        <button class="btn  btn-danger" id="btn1"
+                                onclick="addRecruitMessage(${recruitMessage.id},this)">
+                            >发布
+                        </button>
                     </td>
                 </tr>
             </c:forEach>

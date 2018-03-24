@@ -11,6 +11,9 @@
         <result column="POST_IS_NORMAL" property="postIsNormal"></result>
         <result column="POST_CREATE_TIME" property="postCreateTime"></result>
         <result column="POST_MODIFIED_TIME" property="postModifiedTime"></result>
+        <association property="department" column="{id=DEPARTMENT_ID}"
+                     select="com.windows3.dao.DepartmentDao.queryById"></association>
+
     </resultMap>
    <sql id="createId">
        SELECT MANPOWER_SEQ.nextval FROM dual
@@ -44,5 +47,7 @@
         SELECT * FROM MANPOWER_RESOURCE.POST
         WHERE id = #{id}
     </select>
-
+<select id="queryAll" resultMap="postMap">
+    SELECT * FROM MANPOWER_RESOURCE.POST
+</select>
 </mapper>

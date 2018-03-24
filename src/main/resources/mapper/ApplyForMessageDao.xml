@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windows3.dao.ApplyForMessageDao">
+    <resultMap id="applyForMessageMap" type="ApplyForMessage" >
+        <id column="id" property="id"></id>
+        <result column="RECRUIT_MESSAGE_ID" property="recruitMessageId"></result>
+        <result column="RESUME_ID" property="resumeId"></result>
+        <result column="APPLY_IS_SEE" property="applyIsSee"></result>
+        <result column="APPLY_IS_NORMAL" property="applyIsNormal"></result>
+        <result column="APPLY_CREATE_TIME" property="applyCreateTime"></result>
+        <result column="APPLY_MODIFIED_TIME" property="applyModifiedTime"></result>
+        <association property="resume" column="{id=RESUME_ID}"
+                     select="com.windows3.dao.ResumeDao.queryResumeByResumeId"></association>
+        <association property="recruitMessage" column="{id=RECRUIT_MESSAGE_ID}"
+                     select="com.windows3.dao.RecruitMessageDao.queryById"></association>
+    </resultMap>
+   <sql id="createId">
+       SELECT MANPOWER_SEQ.nextval FROM dual
+   </sql>
+    <sql id="checkid">
+        <where>
+            <choose>
+                <when test="id!=null">
+                    AND  id=#{id}
+                </when>
+                <otherwise>
+                    AND 1=2
+                </otherwise>
+            </choose>
+        </where>
+    </sql>
+<insert id="addApply" parameterType="ApplyForMessage">
+    <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+        <include refid="createId"></include>
+    </selectKey>
+    INSERT INTO MANPOWER_RESOURCE.APPLY_FOR_MESSAGE(ID, RESUME_ID,RECRUIT_MESSAGE_ID)
+    VALUES (#{id},#{resumeId},#{recruitMessageId})
+</insert>
+    <select id="queryBySee" parameterType="int" resultMap="applyForMessageMap">
+        SELECT * FROM MANPOWER_RESOURCE.APPLY_FOR_MESSAGE
+        WHERE APPLY_IS_SEE=#{value}
+
+    </select>
+
+    <select id="queryById" parameterType="ApplyForMessage" resultMap="applyForMessageMap">
+        SELECT * FROM MANPOWER_RESOURCE.APPLY_FOR_MESSAGE
+        WHERE id=#{id}
+    </select>
+    <select id="queryByResumeIdAndRecruitId" parameterType="ApplyForMessage" resultMap="applyForMessageMap">
+         SELECT * FROM MANPOWER_RESOURCE.APPLY_FOR_MESSAGE
+        WHERE RESUME_ID=#{resumeId}
+        AND RECRUIT_MESSAGE_ID=#{recruitMessageId}
+    </select>
+</mapper>

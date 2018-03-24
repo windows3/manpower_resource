@@ -11,8 +11,9 @@
     <title>成功</title>
 </head>
 <body>
-<h1>${info}欢迎:${customer.customerName}</h1>
-<h1>${info}欢迎:${admin.adminName}</h1>
+<h1>${info}</h1>
+<a  class="btn  btn-primary" href="/resume/resume.index">我的简历</a>
+<a  class="btn btn-primary" name="i" href="/recruitMessage/query.all?id=${util.id}">招聘信息</a>
 
 </body>
 </html>

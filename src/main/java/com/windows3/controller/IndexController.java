@@ -63,7 +63,7 @@ public class IndexController {
         session.setAttribute("customer",customer);
         model.addAttribute("info","登录成功");
 
-        return "success";
+        return "customer/success";
 
 
     }
